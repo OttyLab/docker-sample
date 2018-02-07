@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+    gitlab:
+        image: gitlab/gitlab-ce:latest
+        container_name: gitlab
+        volumes:
+            - config:/etc/gitlab:Z
+            - logs:/var/log/gitlab:Z
+            - data:/var/opt/gitlab:Z
+        ports:
+            - "443:443"
+            - "80:80"
+            - "22:22"
+        security_opt:
+            - apparmor:unconfined
+
+    jenkins:
+        image: jenkins:latest
+        container_name: jenkins
+        volumes:
+            - jenkins:/var/jenkins_home
+        ports:
+            - "8080:8080"
+            - "5000:5000"
+
+    #backup:
+    #    image: ubuntu:latest
+    #    container_name: backup
+    #    volumes:
+    #        - config:/data/gitlab/config:Z
+    #        - logs:/data/gitlab/logs:Z
+    #        - data:/data/gitlab/data:Z
+    #        - jenkins:/data/jenkins
+    #        - ./backup:/backup
+    #    command: tar zcvf /backup/backup.tar.gz /data
+
+    #restore:
+    #    image: ubuntu:latest
+    #    container_name: backup
+    #    volumes:
+    #        - config:/data/gitlab/config:Z
+    #        - logs:/data/gitlab/logs:Z
+    #        - data:/data/gitlab/data:Z
+    #        - jenkins:/data/jenkins
+    #        - ./backup:/backup
+    #    command: tar zxvf /backup/backup.tar.gz -C /
+
+volumes:
+    config:
+    logs:
+    data:
+    jenkins:
