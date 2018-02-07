@@ -32,6 +32,7 @@ docker pull jenkins
 2. Create an user
 3. Install Gitlab Merge Request Builder plugin
 4. In systm settings,
+```
     Git Plugin
         configure user.name / user.email
     Gitlab Merge Request Builder:
@@ -41,11 +42,15 @@ docker pull jenkins
         Crontab line: H/2 * * * *
         Asignee Filter: blank
         Build Label Filter: blank
+```
 5. In global security setting
+```
         CSRF: uncheck
         Markup: Safe HTML
+```
 6. Create a new job
 7. In job settings,
+```
     Genetal
         Check build parameter
         Add string (name: gitlabSourceBranch, default: devel)
@@ -64,6 +69,7 @@ docker pull jenkins
     Build trigger:
         Check Gitlab Merge Request Builder
         Gitlab Project Path: foo/bar
+```
 
 ## Tips
 Once the docker-compose down then up, Merge Requst Trigger fails. This might be caused Gitlab Merge Request plugin tries to connect Gitlab during boot and it fails, then enters unexpected status (reserch is required). To recover from thi status, do following steps;
@@ -75,7 +81,7 @@ Once the docker-compose down then up, Merge Requst Trigger fails. This might be 
 Here's the log of Jenkins;
 
 ```
-could not start trigger while loading project 'foo'
+could not start trigger while loading project 'bar'
 java.net.ConnectException: Connection refused (Connection refused)
 	at java.net.PlainSocketImpl.socketConnect(Native Method)
 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
