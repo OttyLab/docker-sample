@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    bitcoind:
+        image: bitcoin:latest
+        build: .
+        container_name: bitcoind
+        volumes:
+            - ./data:/data
+        ports:
+            - "8332:8332"
+            - "8333:8333"
+        command: bash -c "bitcoind -config/data/bitcoin.conf -datadir=/data"

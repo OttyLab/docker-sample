@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    geth:
+        image: geth:latest
+        build: .
+        container_name: gethd
+        deploy:
+          resources:
+              limits:
+                  cpus: '0.0001'
+        volumes:
+            - ./data:/data
+        ports:
+            - "8545:8545"
+            - "30303:30303"
+        command: >
+            bash -c
+            "geth --networkid 1111 --nodiscover --maxpeers 0
+            --datadir /data --ipcdisable --mine --minerthreads 1 --rpc
+            --rpc --rpcaddr '0.0.0.0' --rpcport 8545 --rpccorsdomain '*'
+            --rpcapi 'admin,db,eth,debug,miner,net,shh,txpool,personal,web3'
+            --unlock 0,1 --password /data/passwd --verbosity 6 2>> /data/geth.log"

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    apache_container:
+        image: apache_sample:latest
+        build: .
+        container_name: apache_container
+        volumes:
+            - ./data:/data
+        ports:
+            - "8081:8080"
+        command: /usr/sbin/httpd -DFOREGROUND
