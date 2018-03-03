@@ -77,3 +77,5 @@ RUN git clone https://github.com/opencv/opencv.git && cd opencv && \
         -D BUILD_EXAMPLES=ON .. && \
     make && make install
 
+# Configuration for dynamic link
+RUN sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf' && ldconfig
