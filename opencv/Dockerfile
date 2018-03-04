@@ -59,6 +59,7 @@ RUN apt-get install -y \
     python-pip
 
 # OpenCV
+# Note that opencv_contrib path is specified in opencv cmake.
 RUN git clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && \
     git checkout 3.4.1 && cd ..
 

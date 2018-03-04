@@ -18,9 +18,18 @@ int main() {
     // enumerate files in current directory
     std::vector<cv::String> files;
     cv::glob(".", files); 
+
+    // for_each
+    std::cout << "std::for_each" << std::endl;
     std::for_each(files.begin(), files.end(), [](cv::String file) {
         std::cout << file << std::endl;
     });
+
+    // range-based for
+    std::cout << "range-based for" << std::endl;
+    for(auto file : files) {
+        std::cout << file << std::endl;
+    }
 
     // convert
     cv::Mat dst, gray;
