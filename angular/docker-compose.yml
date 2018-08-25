@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    app_container:
+        image: angular
+        build: .
+        container_name: angular
+        volumes:
+            - ./data:/data
+        ports:
+            - 4200:4200
+        working_dir: /data/my-app
+        command: ng serve --open --host 0.0.0.0 --poll 1
