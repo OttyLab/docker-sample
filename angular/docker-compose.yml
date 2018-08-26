@@ -10,4 +10,4 @@ services:
         ports:
             - 4200:4200
         working_dir: /data/my-app
-        command: ng serve --open --host 0.0.0.0 --poll 1
+        command: bash -c "npm install && ng serve --open --host 0.0.0.0 --poll 1"
