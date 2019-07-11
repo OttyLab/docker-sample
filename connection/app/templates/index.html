@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script type="text/javascript">
+    <!--
+        function ping() {
+            const element = document.createElement('script');
+            element.src = document.getElementById('url').value;
+            console.log(element);
+            document.body.appendChild(element);
+        }
+
+        function callback(data) {
+            const element = document.getElementById('output');
+            output.innerHTML = data;
+        }
+    -->
+    </script>
+</head>
+<body>
+    id = {{id}} 
+    <br/>
+    <input type="text" id="url" size="50" />
+    <input type="submit" value="ping" onClick="ping();" />
+    <div id="output">
+</body>
+</html>
