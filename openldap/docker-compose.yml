@@ -7,6 +7,8 @@ services:
     container_name: openldap
     ports:
       - 389:389
+    volumes:
+      - ./data:/data
     command: bash -c "/configs/start.sh"
 
   phpldapadmin:
