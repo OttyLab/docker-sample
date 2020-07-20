@@ -3,12 +3,13 @@ version: '3'
 services:
   openldap:
     image: openldap:latest
-    build: .
+    build: ./openldap
     container_name: openldap
     ports:
       - 389:389
     volumes:
-      - ./data:/data
+      - ./openldap/data:/data
+      - ./openldap/configs:/configs_tmp
     command: bash -c "/configs/start.sh"
 
   phpldapadmin:
@@ -20,3 +21,13 @@ services:
       - 6443:443
     environment:
       - PHPLDAPADMIN_LDAP_HOSTS=openldap
+
+  sshd:
+    image: sshd:latest
+    build: ./sshd
+    container_name: sshd
+    ports:
+      - 8022:222
+    volumes:
+      - ./sshd/configs:/configs_tmp
+    command: bash -c "/usr/sbin/sshd & /usr/sbin/sssd & while :; do sleep 10; done"

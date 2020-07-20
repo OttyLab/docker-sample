@@ -55,6 +55,15 @@ access to *
         by * break
 
 #######################################################################
+# TLS
+#######################################################################
+TLSCACertificateFile  /configs/openldap-cert.pem
+TLSCertificateFile    /configs/openldap-cert.pem
+TLSCertificateKeyFile /configs/openldap-key.pem
+TLSVerifyClient       never
+TLSCRLCheck           none
+
+#######################################################################
 # MDB database definitions
 #######################################################################
 
