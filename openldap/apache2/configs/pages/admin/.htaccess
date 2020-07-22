@@ -1,0 +1,6 @@
+AuthName "Admin site authentication"
+AuthType Basic
+AuthBasicProvider ldap
+AuthLDAPUrl "ldap://openldap/dc=example,dc=com?uid"
+Require ldap-group cn=admin,ou=Group,dc=example,dc=com
+Require ldap-attribute gidNumber=2000

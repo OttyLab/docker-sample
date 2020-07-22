@@ -26,8 +26,18 @@ services:
     image: sshd:latest
     build: ./sshd
     container_name: sshd
+    depends_on:
+      - openldap
     ports:
       - 8022:222
     volumes:
       - ./sshd/configs:/configs_tmp
     command: bash -c "/usr/sbin/sshd & /usr/sbin/sssd & while :; do sleep 10; done"
+
+  apache2:
+    image: apache2:latest
+    container_name: apache2
+    depends_on:
+      - openldap
+    ports:
+      - 8080:80
