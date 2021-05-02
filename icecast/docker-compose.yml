@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    icecast:
+        image: icecast2:latest
+        build: .
+        container_name: icecast2
+        volumes:
+            - ./config:/config
+        ports:
+            - "8000:8000"
+        command: bash -c "icecast2 -c /config/icecast.xml"
+
+    ezstream01:
+        image: ezstream:latest
+        build: .
+        container_name: ezstream01
+        volumes:
+            - ./data:/data
+            - ./playlist:/playlist
+            - ./config:/config
+        command: bash -c "ezstream -c /config/ezstream01.xml"
+
+    ezstream02:
+        image: ezstream:latest
+        build: .
+        container_name: ezstream02
+        volumes:
+            - ./data:/data
+            - ./playlist:/playlist
+            - ./config:/config
+        command: bash -c "ezstream -c /config/ezstream02.xml"

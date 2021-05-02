@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  EXAMPLE: A valid configuration that contains the absolute minimum
+
+  This configuration streams Ogg files as-is.
+  -->
+
+<ezstream>
+
+  <servers>
+    <server>
+      <hostname>icecast2</hostname>
+      <password>XXXXX</password>
+    </server>
+  </servers>
+
+  <streams>
+    <stream>
+      <mountpoint>/test02</mountpoint>
+      <format>mp3</format>
+    </stream>
+  </streams>
+
+  <intakes>
+    <intake>
+      <filename>/playlist/02.m3u</filename>
+    </intake>
+  </intakes>
+
+</ezstream>
